@@ -44,6 +44,10 @@ def main():
         plt.xlabel(x_col)
         plt.ylabel(y_col)
         plt.title(plot_title)
+        
+        # Make y-axis start at 0 and leave headroom at the top
+        y_max = y.max()
+        plt.ylim(bottom=0, top=y_max + (0.1 * y_max))  # adds 10% extra headroom
 
         output_filename = os.path.splitext(filename)[0] + "_scatter.png"
         output_path = os.path.join(output_folder, output_filename)
