@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import textwrap
 
 def main():
     input_folder = "input_folder"
@@ -17,6 +18,9 @@ def main():
 
     # Ask once for the scatterplot title
     plot_title = input("Enter the scatterplot title: ")
+
+    max_width = 40  # Maximum characters per line
+    wrapped_title = "\n".join(textwrap.wrap(plot_title, max_width))
 
     for filename in files:
         file_path = os.path.join(input_folder, filename)
@@ -43,7 +47,7 @@ def main():
 
         plt.xlabel(x_col)
         plt.ylabel(y_col)
-        plt.title(plot_title)
+        plt.title(wrapped_title)
         
         # Make y-axis start at 0 and leave headroom at the top
         y_max = y.max()
